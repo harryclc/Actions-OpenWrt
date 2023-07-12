@@ -179,6 +179,11 @@ jobs:
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
+        echo "This is OpenWrt firmware for Armvirt 64" >> release.txt
+        echo "* Firmware information" >> release.txt
+        echo "Default IP: 192.168.128.254" >> release.txt
+        echo "Default username: root" >> release.txt
+        echo "Default password: password" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
