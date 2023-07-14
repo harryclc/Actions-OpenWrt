@@ -194,22 +194,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag_name: armvirt_${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
-
-    - name: Upload firmware to Release
-      uses: ncipollo/release-action@main
-      with:
-        tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
-        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-        allowUpdates: true
-        body: |
-          This is OpenWrt firmware for Armvirt 64
-          * Firmware information
-          Default IP: 192.168.128.254
-          Default username: root
-          Default password: password
+        files: |
+            ${{ env.FIRMWARE }}/*
+            ${{ env.PACKAGED_OUTPUTPATH }}/*
 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
@@ -223,5 +212,6 @@ jobs:
       with:
         keep_latest: 3
         delete_tags: true
+        delete_tag_pattern: armvirt
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
