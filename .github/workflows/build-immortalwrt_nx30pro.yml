@@ -70,6 +70,7 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         cd openwrt
+        git clone https://github.com/gngpp/luci-theme-design package/luci-theme-design
         git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 
     - name: Update feeds
