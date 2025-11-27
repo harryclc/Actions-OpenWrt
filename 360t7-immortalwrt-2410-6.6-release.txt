@@ -1,0 +1,5 @@
+360T7 固件【ImmortalWrt 24.10（6.6内核+闭源MTK驱动）】
+
+237大佬源码编译，含 arpbind、autoreboot、ddns、ttyd、upnp、vlmcsd 模块和 argon 主题。
+默认IP地址: 192.168.28.4
+默认密码: password
